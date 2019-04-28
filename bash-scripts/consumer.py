@@ -54,7 +54,7 @@ class Consumer(object):
                 time.sleep(0.01)
 
         except RuntimeError as e:
-            #print "ERROR: %s" %  e
+            print "ERROR: %s" %  e
 
 
     def _sendNextInterest(self, name):
