@@ -20,7 +20,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # A copy of the GNU General Public License is in the file COPYING.
-
+import os
 import sys
 import time
 import argparse
@@ -66,10 +66,26 @@ class Producer(object):
 
 
     def onInterest(self, prefix, interest, transport, registeredPrefixId):
+        filepath = 'ram.txt'
+        counter = 0.0
+        avg = 0 
+        with open(filepath) as fp:  
+            line = fp.readline()
+        cnt = 0
+        while line:
+            conv_int = float(line)
+            line = fp.readline()
+            #print("Line {}: {}".format(cnt, line.strip()))
+            counter = counter + conv_int
+            cnt += 1
+        total = (cnt)
+        #print (total)
+        avg = (counter)/total
+        #print (avg)
         interestName = interest.getName()
 
         data = ramworker.workit(interestName)
-        data.setContent("Hello, " + interestName.toUri())
+        data.setContent("RAM avg:" + str(avg))
 
         hourMilliseconds = 3600 * 1000
         data.getMetaInfo().setFreshnessPeriod(hourMilliseconds)
