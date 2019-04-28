@@ -26,6 +26,7 @@ import time
 import argparse
 import traceback
 import random
+import ramworker
 
 from pyndn import Name
 from pyndn import Data
@@ -67,7 +68,7 @@ class Producer(object):
     def onInterest(self, prefix, interest, transport, registeredPrefixId):
         interestName = interest.getName()
 
-        data = Data(interestName)
+        data = ramworker.workit(interestName)
         data.setContent("Hello, " + interestName.toUri())
 
         hourMilliseconds = 3600 * 1000
