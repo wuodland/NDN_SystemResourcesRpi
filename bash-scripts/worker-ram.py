@@ -12,6 +12,6 @@ with open(filepath) as fp:
        counter = counter + conv_int
        cnt += 1
 total = (cnt)
-print (total)
+#print (total)
 avg = (counter)/total
 print (avg)
