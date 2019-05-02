@@ -9,3 +9,10 @@ One overall bash script is to log all system details together. Separate scripts 
 The consumer and producer scripts are essentially from the GEC21 repository @ https://github.com/dibenede/ndn-tutorial-gec21/
 
 Attribution for all other files and libraries have also been included in their respective files.
+
+To execute use the following commands: 
+
+python producer.py -n /ndn/network 
+python consumer.py -u /ndn/network
+
+Insert the correct the network network prefix for interest routing. 
