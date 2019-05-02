@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- Mode:python; c-file-style:"gnu"; indent-tabs-mode:nil -*- */
 #
 # Copyright (C) 2014 Regents of the University of California.
@@ -26,7 +27,6 @@ import time
 import argparse
 import traceback
 import random
-import ramworker
 
 from pyndn import Name
 from pyndn import Data
@@ -100,10 +100,6 @@ class Producer(object):
     def onRegisterFailed(self, prefix):
         print "Register failed for prefix", prefix.toUri()
         self.isDone = True
-
-
-
-
 
 
 if __name__ == '__main__':

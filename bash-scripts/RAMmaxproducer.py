@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- Mode:python; c-file-style:"gnu"; indent-tabs-mode:nil -*- */
 #
 # Copyright (C) 2014 Regents of the University of California.
@@ -65,26 +66,27 @@ class Producer(object):
 
 
     def onInterest(self, prefix, interest, transport, registeredPrefixId):
-        filepath = 'cpu.txt'
+        filepath = 'ram.txt'
         counter = 0.0
-        avg = 0 
+        max = 0
+        listall = [] 
         fp = open(filepath)  
-        line = fp.readline()
+        line = f.read().splitlines()
         cnt = 0
         while line:
-            conv_int = float(line)
-            line = fp.readline()
+            listall = [int(i) for i in fp]
+            #line = fp.readline()
             #print("Line {}: {}".format(cnt, line.strip()))
-            counter = counter + conv_int
+            #counter = counter + conv_int
             cnt += 1
-        total = (cnt)
+        #total = (cnt)
         #print (total)
-        avg = (counter)/total
+        max = max(listall)
         #print (avg)
         interestName = interest.getName()
 
         data = Data(interestName)
-        data.setContent("CPU avg:" + str(avg))
+        data.setContent("RAM max:" + str(max))
 
         hourMilliseconds = 3600 * 1000
         data.getMetaInfo().setFreshnessPeriod(hourMilliseconds)
@@ -99,6 +101,12 @@ class Producer(object):
     def onRegisterFailed(self, prefix):
         print "Register failed for prefix", prefix.toUri()
         self.isDone = True
+
+
+
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parse command line args for ndn producer')
     parser.add_argument("-n", "--namespace", required=True, help='namespace to listen under')
