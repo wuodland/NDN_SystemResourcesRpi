@@ -100,12 +100,6 @@ class Producer(object):
     def onRegisterFailed(self, prefix):
         print "Register failed for prefix", prefix.toUri()
         self.isDone = True
-
-
-
-
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parse command line args for ndn producer')
     parser.add_argument("-n", "--namespace", required=True, help='namespace to listen under')

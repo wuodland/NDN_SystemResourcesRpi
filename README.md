@@ -10,9 +10,9 @@ The consumer and producer scripts are essentially from the GEC21 repository @ ht
 
 Attribution for all other files and libraries have also been included in their respective files.
 
-To execute use the following commands: 
+**To execute use the following commands:** 
 
-python producer.py -n /ndn/network 
+python producer.py -n /ndn/network <br/>
 python consumer.py -u /ndn/network
 
 Insert the correct the network network prefix for interest routing. 
