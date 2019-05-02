@@ -69,8 +69,8 @@ class Producer(object):
         filepath = 'ram.txt'
         counter = 0.0
         avg = 0 
-        with open(filepath) as fp:  
-            line = fp.readline()
+        fp = open(filepath)  
+        line = fp.readline()
         cnt = 0
         while line:
             conv_int = float(line)
@@ -84,7 +84,7 @@ class Producer(object):
         #print (avg)
         interestName = interest.getName()
 
-        data = ramworker.workit(interestName)
+        data = Data(interestName)
         data.setContent("RAM avg:" + str(avg))
 
         hourMilliseconds = 3600 * 1000
