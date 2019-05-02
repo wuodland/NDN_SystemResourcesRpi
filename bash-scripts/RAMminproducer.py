@@ -68,10 +68,10 @@ class Producer(object):
     def onInterest(self, prefix, interest, transport, registeredPrefixId):
         lines = open('ram.txt', 'r')
         numbers = map(float, lines)
-        max_number = max(numbers)
+        min_number = min(numbers)
         interestName = interest.getName()
         data = Data(interestName)
-        data.setContent("RAM max:" + str(max_number))
+        data.setContent("RAM min:" + str(min_number))
 
         hourMilliseconds = 3600 * 1000
         data.getMetaInfo().setFreshnessPeriod(hourMilliseconds)
