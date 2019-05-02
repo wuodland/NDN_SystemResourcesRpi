@@ -66,27 +66,12 @@ class Producer(object):
 
 
     def onInterest(self, prefix, interest, transport, registeredPrefixId):
-        filepath = 'ram.txt'
-        counter = 0.0
-        max = 0
-        listall = [] 
-        fp = open(filepath)  
-        line = f.read().splitlines()
-        cnt = 0
-        while line:
-            listall = [int(i) for i in fp]
-            #line = fp.readline()
-            #print("Line {}: {}".format(cnt, line.strip()))
-            #counter = counter + conv_int
-            cnt += 1
-        #total = (cnt)
-        #print (total)
-        max = max(listall)
-        #print (avg)
+        lines = open('ram.txt', 'r')
+        numbers = map(int, lines)
+        max_number = max(numbers)
         interestName = interest.getName()
-
         data = Data(interestName)
-        data.setContent("RAM max:" + str(max))
+        data.setContent("RAM max:" + str(max_number))
 
         hourMilliseconds = 3600 * 1000
         data.getMetaInfo().setFreshnessPeriod(hourMilliseconds)
@@ -101,10 +86,6 @@ class Producer(object):
     def onRegisterFailed(self, prefix):
         print "Register failed for prefix", prefix.toUri()
         self.isDone = True
-
-
-
-
 
 
 if __name__ == '__main__':
