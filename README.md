@@ -26,5 +26,7 @@ Insert the correct the network network prefix for interest routing. <br/>
 
 The face.sh file is adding the faces that are involved in the network. Edit them with the intended, correct IP addresses and routes to get them to work. Similarly, while running exec.sh(on every node where monitoring is required) don't forget to run it with the correct rotues. <br/>
 
-ram.sh and cpu.sh files can be run in the background to create the logs. They are quite simple and easy to use.
+ram.sh and cpu.sh files can be run in the background to create the logs. They are quite simple and easy to use. <br/>
+
+If there is any problem, you can always raise an issue and ask your questions. 
 
